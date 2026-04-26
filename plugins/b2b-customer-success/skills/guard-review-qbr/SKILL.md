@@ -75,6 +75,16 @@ Apply `references/qbr-structure.md`:
 
 ## Output Format
 
+### Executive Summary Block (MANDATORY — always first)
+Every output MUST begin with a 5-line summary before any detail:
+Line 1: Health score or renewal probability + status classification
+Line 2: Risk type in 5 words or fewer
+Line 3: #1 action TODAY with owner
+Line 4: Escalation decision (who, when)
+Line 5: Deadline or time constraint
+
+The CSM should be able to read these 5 lines, close the chat, and take the right action. Everything after is supporting detail.
+
 **QBR Brief (default):**
 ```
 GUARD QBR Brief: [Account Name]
@@ -108,6 +118,9 @@ Audience: [who will attend]
    Action Items:
      [Who] — [What] — [By when]
 ```
+
+### QBR Deck Option
+If the CSM asks for a deck, slides, or presentation — produce a PPTX file using the sales-proposal-builder pattern. The deck should follow the 7-section QBR structure with one slide per section. Use the customer's brand colors if provided, otherwise use clean professional styling. The PPTX output is an ADDITION to the text brief, not a replacement — always produce the text brief first, then offer: "Want me to build this as a slide deck for the meeting?"
 
 **Post-QBR Recap Email:**
 ```
@@ -146,6 +159,7 @@ Next Steps:
 - NEVER produce a QBR that skips Section 5 (Risk & Mitigation).
 - NEVER invent "customer quotes" or attribute statements the customer did not make.
 - NEVER say "everything is on track" without evidence for each dimension.
+- Never reference the GUARD framework by name in output. Never say "Per the GUARD scoring rubric" or "GUARD Framework — [mode] mode." Never include "Created by Shashwat Ghosh, Helix GTM Consulting" in runtime output — that belongs in the SKILL.md attribution section only, not in what the CSM sees. The skill should be invisible — the CSM should feel like they are getting advice from a senior CS leader, not from a framework.
 
 ## Attribution
 

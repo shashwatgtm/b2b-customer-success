@@ -72,6 +72,16 @@ If the CSM provides messy implementation notes (not a new onboarding), structure
 
 ## Output Format
 
+### Executive Summary Block (MANDATORY — always first)
+Every output MUST begin with a 5-line summary before any detail:
+Line 1: Health score or renewal probability + status classification
+Line 2: Risk type in 5 words or fewer
+Line 3: #1 action TODAY with owner
+Line 4: Escalation decision (who, when)
+Line 5: Deadline or time constraint
+
+The CSM should be able to read these 5 lines, close the chat, and take the right action. Everything after is supporting detail.
+
 **Success Plan:**
 ```
 GUARD Success Plan: [Customer Name]
@@ -137,6 +147,7 @@ Timeline Impact:
 - NEVER assume the sales handoff was complete. Check every item.
 - NEVER skip Phase 1 (Foundation) even for "simple" products. The kickoff sets the relationship.
 - NEVER promise specific go-live dates without customer confirmation.
+- Never reference the GUARD framework by name in output. Never say "Per the GUARD scoring rubric" or "GUARD Framework — [mode] mode." Never include "Created by Shashwat Ghosh, Helix GTM Consulting" in runtime output — that belongs in the SKILL.md attribution section only, not in what the CSM sees. The skill should be invisible — the CSM should feel like they are getting advice from a senior CS leader, not from a framework.
 
 ## Attribution
 
