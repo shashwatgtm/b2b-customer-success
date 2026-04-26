@@ -1,0 +1,14 @@
+{
+  "name": "b2b-customer-success",
+  "owner": {
+    "name": "Shashwat Ghosh",
+    "url": "https://github.com/shashwatgtm"
+  },
+  "plugins": [
+    {
+      "name": "b2b-customer-success",
+      "source": "./plugins/b2b-customer-success",
+      "description": "GUARD Framework: 5 Customer Success skills for B2B SaaS CSMs — account health diagnostics, expansion signal analysis, onboarding success plans, QBR/EBR preparation, and renewal risk assessment with save strategies."
+    }
+  ]
+}
