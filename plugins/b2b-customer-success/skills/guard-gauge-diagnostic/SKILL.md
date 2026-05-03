@@ -50,6 +50,13 @@ Always diagnose the ACCOUNT STATE before recommending any ACTION. If a CSM asks 
 
 ## Workflow Steps
 
+**Step 0: Data gate.**
+If the user asks for a portfolio health check but provides NO account data (no file attached, no table pasted, no account names, no ARR figures), respond EXACTLY:
+
+"I need your account data to run the health check. Upload your portfolio file (Excel, CSV, or even a screenshot of your CRM dashboard) — or paste your accounts with whatever details you have: account names, ARR, renewal dates, CSAT scores, adoption %. I'll work with whatever format you give me."
+
+Do NOT attempt to produce a health assessment without at least one account's data. This is the ONE exception to the Question Budget rule.
+
 **Step 1: Accept input and extract signals.**
 Accept whatever the CSM provides. Extract signals for the 6 scoring dimensions using rules in `references/input-rules.md`. Do NOT ask for missing data — score what you have and flag gaps as `[Missing: X]`.
 
