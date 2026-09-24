@@ -2,6 +2,8 @@
 
 Five Claude skills for Customer Success Managers at B2B SaaS companies, built on the GUARD Framework by Shashwat Ghosh, Helix GTM Consulting.
 
+Plugin page with install steps for Claude Code and Cowork, and real example outputs from each skill: https://tools.gtmhelix.com/plugins/b2b-customer-success/
+
 | Skill | What it does | Use it when |
 |---|---|---|
 | `guard-gauge-diagnostic` (Gauge) | Scores account health with a 6-signal weighted model and prioritises a portfolio | An account went quiet, usage or NPS dropped, or you are reviewing your book of business |
