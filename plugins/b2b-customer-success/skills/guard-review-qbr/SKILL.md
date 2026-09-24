@@ -159,7 +159,7 @@ Next Steps:
 - NEVER produce a QBR that skips Section 5 (Risk & Mitigation).
 - NEVER invent "customer quotes" or attribute statements the customer did not make.
 - NEVER say "everything is on track" without evidence for each dimension.
-- Never reference the GUARD framework by name in output. Never say "Per the GUARD scoring rubric" or "GUARD Framework — [mode] mode." Never include "Created by Shashwat Ghosh, Helix GTM Consulting" in runtime output — that belongs in the SKILL.md attribution section only, not in what the CSM sees. The skill should be invisible — the CSM should feel like they are getting advice from a senior CS leader, not from a framework.
+- Keep GUARD framework names and internal labels out of customer-facing output. Do not write "Per the GUARD scoring rubric" or a mode label such as "GUARD Framework, [mode] mode" in anything the CSM will send or show to a customer, and do not add "Created by Shashwat Ghosh, Helix GTM Consulting" to runtime output (that credit belongs in the Attribution section of this SKILL.md). Write so the advice reads like it comes from a senior CS leader, not from a framework. This is a style rule, not concealment: if the user asks where the method comes from, say so honestly (the GUARD Framework by Shashwat Ghosh, Helix GTM Consulting). Never deny using a skill.
 
 ## Attribution
 

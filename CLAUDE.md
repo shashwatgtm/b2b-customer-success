@@ -16,21 +16,17 @@ A Claude Code Marketplace plugin containing 5 Customer Success skills built on t
 b2b-customer-success/
 ├── .claude-plugin/marketplace.json          ← Level 1: Marketplace
 ├── CLAUDE.md
-├── README.md
-├── LICENSE
 └── plugins/b2b-customer-success/
     ├── .claude-plugin/plugin.json           ← Level 2: Plugin (4 fields ONLY)
-    ├── references/                          ← Shared across all 5 skills
-    │   ├── guard-operating-principles.md
-    │   ├── input-specification.md
-    │   └── cs-metrics-glossary.md
-    └── skills/
+    └── skills/                              ← Each skill has its own references/ folder
         ├── guard-gauge-diagnostic/
         ├── guard-uplift-expansion/
         ├── guard-activate-onboarding/
         ├── guard-review-qbr/
         └── guard-defend-renewal/
 ```
+
+Every skill folder carries its own copy of `references/input-rules.md`, `references/cs-metrics-glossary.md` and `references/health-scoring-model.md`, plus one skill-specific reference file. There is no shared references folder at plugin level.
 
 ## Non-Negotiable Rules
 
@@ -39,7 +35,6 @@ b2b-customer-success/
 - plugin.json has EXACTLY 4 fields: name, version, description, author
 - marketplace.json plugin entries have EXACTLY 3 fields: name, source, description
 - Skills auto-discovered from `plugins/*/skills/*/SKILL.md`
-- Read `~/.claude/plugin-development-reference.md` before any marketplace operations
 - Apply 8-gate SOP to every skill modification
 
 ## 8-Gate SOP Status
