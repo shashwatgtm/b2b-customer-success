@@ -9,7 +9,7 @@ description: >
   "sales promised something we don't have", "how to onboard this account",
   or "implementation notes to status update". Also handles messy implementation
   notes structuring into professional executive updates. Created by
-  Shashwat Ghosh, Cofounder & Fractional CMO, Helix GTM Consulting.
+  Shashwat Ghosh, Founder & Fractional CMO, Helix GTM Consulting.
 ---
 
 # GUARD Activate — Onboarding Success Plan Builder

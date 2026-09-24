@@ -9,7 +9,7 @@ description: >
   "contract renewal in X months", "renewal forecast", "how to save this
   account", "RFP for replacement", or "vendor review". Produces renewal
   probability scores, risk-matched save playbooks, and conversation guides.
-  Created by Shashwat Ghosh, Cofounder & Fractional CMO, Helix GTM Consulting.
+  Created by Shashwat Ghosh, Founder & Fractional CMO, Helix GTM Consulting.
 ---
 
 # GUARD Defend — Renewal Risk Assessment & Save Strategy

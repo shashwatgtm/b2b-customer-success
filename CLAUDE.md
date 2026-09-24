@@ -32,7 +32,7 @@ Every skill folder carries its own copy of `references/input-rules.md`, `referen
 
 - Never fabricate data — use `[Missing: X]` and `[Assumption: Y]` flags
 - Question Budget: maximum 2 clarifying questions per skill invocation
-- plugin.json has EXACTLY 4 fields: name, version, description, author
+- plugin.json has EXACTLY 5 fields: name, version, description, author, license
 - marketplace.json plugin entries have EXACTLY 3 fields: name, source, description
 - Skills auto-discovered from `plugins/*/skills/*/SKILL.md`
 - Apply 8-gate SOP to every skill modification
@@ -68,5 +68,5 @@ Every skill folder carries its own copy of `references/input-rules.md`, `referen
 
 ## Author
 
-Shashwat Ghosh, Cofounder & Fractional CMO, Helix GTM Consulting
+Shashwat Ghosh, Founder & Fractional CMO, Helix GTM Consulting
 GitHub: shashwatgtm | Contact: shashwat@gtmhelix.com

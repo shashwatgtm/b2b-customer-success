@@ -8,7 +8,7 @@ description: >
   our quarterly review", "need a QBR brief", "post-QBR recap email", "QBR
   for an at-risk account", or "first QBR after onboarding". Accepts messy
   notes, previous QBR data, CRM exports, or conversational context and produces
-  review-ready materials. Created by Shashwat Ghosh, Cofounder & Fractional
+  review-ready materials. Created by Shashwat Ghosh, Founder & Fractional
   CMO, Helix GTM Consulting.
 ---
 

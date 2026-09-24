@@ -38,7 +38,7 @@ Report security problems privately to shashwat@hyperplays.in with the subject "S
 
 ## Licence
 
-No licence has been chosen yet, so all rights are reserved by the author. Contact shashwat@hyperplays.in about use beyond installing the plugin.
+Released under the MIT License. See [LICENSE](LICENSE). Copyright (c) 2026 Shashwat Ghosh / Helix GTM Consulting.
 
 ## Support
 

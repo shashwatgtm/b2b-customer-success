@@ -7,7 +7,7 @@ description: >
   interested", "how to pitch expansion", "when to upsell", "NRR improvement",
   "usage growing fast", "they asked about advanced features", or "expansion
   business case". Builds structured business cases and provides conversation
-  guides. Created by Shashwat Ghosh, Cofounder & Fractional CMO,
+  guides. Created by Shashwat Ghosh, Founder & Fractional CMO,
   Helix GTM Consulting.
 ---
 
