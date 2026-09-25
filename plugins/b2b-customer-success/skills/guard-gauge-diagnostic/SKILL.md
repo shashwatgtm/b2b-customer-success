@@ -8,7 +8,7 @@ description: >
   "NPS dropped", "usage declined", "portfolio review", "book of business",
   or "which accounts are at risk". Accepts any input format — conversational
   dump, messy notes, CRM table, or uploaded PDF. Scores what is available,
-  flags what is missing. Created by Shashwat Ghosh, Founder & Fractional CMO,
+  flags what is missing. Created by Shashwat Ghosh, Co-Founder and Fractional CMO,
   Helix GTM Consulting.
 ---
 

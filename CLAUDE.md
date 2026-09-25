@@ -68,5 +68,5 @@ Every skill folder carries its own copy of `references/input-rules.md`, `referen
 
 ## Author
 
-Shashwat Ghosh, Founder & Fractional CMO, Helix GTM Consulting
+Shashwat Ghosh, Co-Founder and Fractional CMO, Helix GTM Consulting
 GitHub: shashwatgtm | Contact: shashwat@gtmhelix.com
