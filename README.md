@@ -36,7 +36,7 @@ This plugin sends no data to Helix GTM Consulting or anyone else. It contains on
 
 ## Security
 
-Report security problems privately to shashwat@hyperplays.in with the subject "Security report: b2b-customer-success". Please do not open a public issue for a security problem.
+Report security problems privately to shashwat@gtmhelix.com with the subject "Security report: b2b-customer-success". Please do not open a public issue for a security problem.
 
 ## Licence
 
@@ -44,4 +44,4 @@ Released under the MIT License. See [LICENSE](LICENSE). Copyright (c) 2026 Shash
 
 ## Support
 
-Shashwat Ghosh, Helix GTM Consulting: shashwat@hyperplays.in
+Shashwat Ghosh, Helix GTM Consulting: shashwat@gtmhelix.com
