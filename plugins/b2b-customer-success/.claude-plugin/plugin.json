@@ -7,8 +7,10 @@
     "name": "Shashwat Ghosh",
     "url": "https://gtmexpert.com"
   },
-  "homepage": "https://gtmhelix.com/",
+  "homepage": "https://tools.gtmhelix.com/plugins/b2b-customer-success/",
   "repository": "https://github.com/shashwatgtm/b2b-customer-success",
   "license": "MIT",
-  "keywords": ["b2b", "customer-success", "guard", "account-health", "expansion", "onboarding", "qbr", "renewal"]
+  "keywords": ["b2b", "customer-success", "guard", "account-health", "expansion", "onboarding", "qbr", "renewal"],
+  "privacyPolicyUrl": "https://gtmhelix.com/privacy/",
+  "icon": "./assets/icon.svg"
 }
