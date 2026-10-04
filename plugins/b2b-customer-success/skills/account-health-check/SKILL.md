@@ -37,7 +37,7 @@ Always diagnose the ACCOUNT STATE before recommending any ACTION. If a CSM asks 
 
 1. Qualitative signals ("they mentioned evaluating alternatives") override quantitative signals (healthy dashboard) when they conflict.
 2. Recency overrides history. A 3-year healthy account that went dark 3 weeks ago is at risk NOW.
-3. For accounts under 90 days old, default to `onboarding-plan` instead — baselines are not established.
+3. For accounts under 90 days old, default to `onboarding-plan` instead: baselines are not established.
 4. When Gauge detects renewal risk, recommend cross-referencing with `renewal-save-plan`.
 
 ## Trigger Phrases

@@ -4,11 +4,11 @@
 
 A Claude Code Marketplace plugin containing 5 Customer Success skills built on the GUARD Framework:
 
-1. **account-health-check** — Account health scoring (6-signal weighted model)
-2. **upsell-and-expansion** — Expansion signal analysis & business case builder
-3. **onboarding-plan** — Onboarding success plan builder (4-phase, 90-day)
-4. **qbr-prep** — QBR/EBR preparation (7-section template)
-5. **renewal-save-plan** — Renewal risk assessment & save strategy (180-day cadence)
+1. **account-health-check**: Account health scoring (6-signal weighted model)
+2. **upsell-and-expansion**: Expansion signal analysis & business case builder
+3. **onboarding-plan**: Onboarding success plan builder (4-phase, 90-day)
+4. **qbr-prep**: QBR/EBR preparation (7-section template)
+5. **renewal-save-plan**: Renewal risk assessment & save strategy (180-day cadence)
 
 ## Architecture
 
