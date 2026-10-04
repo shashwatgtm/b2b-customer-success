@@ -23,10 +23,14 @@ In Claude Code:
 
 ## Example prompts
 
-1. "Here are my notes on ExampleCo: usage down 30% over two months, champion changed roles, NPS 6, renewal in 5 months, ARR 80k. How healthy is this account and what should I do first?"
-2. "ExampleCo signed yesterday: 200 seats, mid-market, the sales handoff notes are below. Build the 90-day onboarding success plan."
-3. "Prepare a QBR brief for ExampleCo. Here is last quarter's usage, the goals we agreed at kickoff, and two open support escalations."
-4. "ExampleCo's renewal is in 120 days and they mentioned a competitor evaluation. Assess the renewal risk and give me a save strategy."
+*Example only: Kissflow is a real company used to show how this skill works, using public information from its own website. It is not a customer, partner or endorser of Helix GTM Consulting, and nothing here is advice to or about it.*
+
+In these prompts you are a customer success manager at Kissflow, which describes itself as "a unified digital operations platform to build apps, automate workflows, manage cases, and integrate systems" (https://kissflow.com/platform/). The account in each prompt is an unnamed mid-market manufacturer, and every number is a made-up test input, not a fact about Kissflow or any real customer.
+
+1. "I am a customer success manager at Kissflow. Here are my notes on one of our accounts, a mid-market manufacturer (hypothetical numbers): usage down 30% over two months, champion changed roles, NPS 6, renewal in 5 months, ARR 80k. How healthy is this account and what should I do first?"
+2. "A mid-market manufacturer (hypothetical, 200 seats) signed with us at Kissflow yesterday. The sales handoff notes are below. Build the 90-day onboarding success plan."
+3. "Prepare a QBR brief for one of our Kissflow accounts, a mid-market manufacturer (hypothetical). Here is last quarter's usage, the goals we agreed at kickoff, and two open support escalations."
+4. "The renewal for one of our Kissflow accounts, a mid-market manufacturer (hypothetical), is in 120 days and they mentioned a competitor evaluation. Assess the renewal risk and give me a save strategy."
 
 The skills work only from what you give them. Where data is missing they write `[Missing: ...]` or `[Assumption: ...]` instead of inventing it.
 
