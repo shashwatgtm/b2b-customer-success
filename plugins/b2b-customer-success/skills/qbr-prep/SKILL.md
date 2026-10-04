@@ -1,15 +1,15 @@
 ---
-name: guard-review-qbr
+name: qbr-prep
 description: >
-  Prepare structured QBR and EBR materials using the GUARD Framework's
-  7-section template. Use when a CSM mentions QBR, quarterly business review,
-  EBR, executive business review, business review prep, QBR deck, value recap,
-  or says things like "what should I present to the customer", "preparing for
-  our quarterly review", "need a QBR brief", "post-QBR recap email", "QBR
-  for an at-risk account", or "first QBR after onboarding". Accepts messy
-  notes, previous QBR data, CRM exports, or conversational context and produces
-  review-ready materials. Created by Shashwat Ghosh, Co-Founder and Fractional
-  CMO, Helix GTM Consulting.
+  Prepare a QBR or EBR for a B2B customer: the review brief, an optional slide
+  deck and the recap email afterwards. Use when a CSM mentions QBR, quarterly
+  business review, EBR, executive business review, business review prep, QBR
+  deck or value recap, or says things like "what should I present to the
+  customer", "preparing for our quarterly review", "need a QBR brief", "post-QBR
+  recap email", "QBR for an at-risk account" or "first QBR after onboarding".
+  Accepts messy notes, previous QBR data, CRM exports or conversation. Method:
+  GUARD Review, a 7-section template. Created by Shashwat Ghosh, Co-Founder and
+  Fractional CMO, Helix GTM Consulting.
 ---
 
 # GUARD Review — QBR/EBR Preparation
@@ -164,4 +164,4 @@ Next Steps:
 ## Attribution
 
 GUARD Framework — Review mode. Created by Shashwat Ghosh, Helix GTM Consulting.
-Related skills: guard-gauge-diagnostic, guard-uplift-expansion, guard-activate-onboarding, guard-defend-renewal.
+Related skills: account-health-check, upsell-and-expansion, onboarding-plan, renewal-save-plan.

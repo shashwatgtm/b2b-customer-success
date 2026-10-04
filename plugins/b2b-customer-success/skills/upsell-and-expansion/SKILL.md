@@ -1,13 +1,14 @@
 ---
-name: guard-uplift-expansion
+name: upsell-and-expansion
 description: >
-  Identify and action B2B expansion opportunities using the GUARD Framework's
-  4-signal model. Use when a CSM asks about upsell, cross-sell, expansion
-  opportunities, or says things like "customer hitting limits", "new department
-  interested", "how to pitch expansion", "when to upsell", "NRR improvement",
-  "usage growing fast", "they asked about advanced features", or "expansion
-  business case". Builds structured business cases and provides conversation
-  guides. Created by Shashwat Ghosh, Co-Founder and Fractional CMO,
+  Find upsell, cross-sell and expansion openings in B2B accounts and build the
+  business case to pitch them. Use when a CSM asks about upsell, cross-sell,
+  expansion opportunities or net revenue retention, or says things like
+  "customer hitting limits", "new department interested", "how to pitch
+  expansion", "when to upsell", "NRR improvement", "usage growing fast", "they
+  asked about advanced features" or "expansion business case". Produces a
+  business case and a conversation guide. Method: GUARD Uplift, a 4-signal
+  expansion model. Created by Shashwat Ghosh, Co-Founder and Fractional CMO,
   Helix GTM Consulting.
 ---
 
@@ -19,7 +20,7 @@ Read `references/input-rules.md` BEFORE executing any workflow step. Rules: One 
 
 ## Golden Rule
 
-Never pitch expansion to an at-risk account. If the health score is below 60 or risk signals are present, redirect to `guard-defend-renewal` or `guard-gauge-diagnostic` first. The ONLY exception: when the expansion itself IS the save strategy (upgrading solves the problem causing risk). Expansion follows health, never precedes it.
+Never pitch expansion to an at-risk account. If the health score is below 60 or risk signals are present, redirect to `renewal-save-plan` or `account-health-check` first. The ONLY exception: when the expansion itself IS the save strategy (upgrading solves the problem causing risk). Expansion follows health, never precedes it.
 
 ## Context and Role Detection
 
@@ -59,7 +60,7 @@ Accept whatever the CSM provides. Extract expansion-relevant signals across 4 ca
 Hot (4/4) / Warm (3/4) / Developing (2/4) / Early (1/4) / Not Ready (0/4).
 
 **Step 3: Health gate check.**
-If health signals suggest risk (from input context), flag: "Expansion signals are present but health signals suggest risk. Recommend running `guard-gauge-diagnostic` first." Do NOT proceed with business case if account appears at-risk.
+If health signals suggest risk (from input context), flag: "Expansion signals are present but health signals suggest risk. Recommend running `account-health-check` first." Do NOT proceed with business case if account appears at-risk.
 
 **Step 4: Identify expansion type.**
 - Same-product expansion (seats, usage, tier) → CSM can often own end-to-end
@@ -131,4 +132,4 @@ Conversation Opener:
 ## Attribution
 
 GUARD Framework — Uplift mode. Created by Shashwat Ghosh, Helix GTM Consulting.
-Related skills: guard-gauge-diagnostic, guard-activate-onboarding, guard-review-qbr, guard-defend-renewal.
+Related skills: account-health-check, onboarding-plan, qbr-prep, renewal-save-plan.

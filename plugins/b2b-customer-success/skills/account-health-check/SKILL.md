@@ -1,15 +1,16 @@
 ---
-name: guard-gauge-diagnostic
+name: account-health-check
 description: >
-  Diagnose B2B account health using the GUARD Framework's 6-signal weighted
-  scoring model. Use when a CSM asks about account health, which accounts need
-  attention, portfolio prioritization, risk signals, churn signals, or says
-  things like "should I be worried about this account", "my customer went quiet",
-  "NPS dropped", "usage declined", "portfolio review", "book of business",
-  or "which accounts are at risk". Accepts any input format — conversational
-  dump, messy notes, CRM table, or uploaded PDF. Scores what is available,
-  flags what is missing. Created by Shashwat Ghosh, Co-Founder and Fractional CMO,
-  Helix GTM Consulting.
+  Find which B2B accounts are at risk of churn and why, and which need your
+  attention this week. Use when a CSM asks about account health, churn risk,
+  risk signals, portfolio prioritization or a book of business review, or says
+  things like "should I be worried about this account", "my customer went
+  quiet", "NPS dropped", "usage declined", "portfolio review", "book of
+  business" or "which accounts are at risk". Accepts any input: a conversational
+  dump, messy notes, a CRM table or an uploaded PDF. Scores what is available
+  and flags what is missing. Method: GUARD Gauge, a 6-signal weighted health
+  score. Created by Shashwat Ghosh, Co-Founder and Fractional CMO, Helix GTM
+  Consulting.
 ---
 
 # GUARD Gauge — Account Health Diagnostic
@@ -36,8 +37,8 @@ Always diagnose the ACCOUNT STATE before recommending any ACTION. If a CSM asks 
 
 1. Qualitative signals ("they mentioned evaluating alternatives") override quantitative signals (healthy dashboard) when they conflict.
 2. Recency overrides history. A 3-year healthy account that went dark 3 weeks ago is at risk NOW.
-3. For accounts under 90 days old, default to `guard-activate-onboarding` instead — baselines are not established.
-4. When Gauge detects renewal risk, recommend cross-referencing with `guard-defend-renewal`.
+3. For accounts under 90 days old, default to `onboarding-plan` instead — baselines are not established.
+4. When Gauge detects renewal risk, recommend cross-referencing with `renewal-save-plan`.
 
 ## Trigger Phrases
 
@@ -143,7 +144,7 @@ Recommended deep-dives: [top 2-3 accounts by urgency]
 - **"My customer went quiet":** Do not panic. Ask internally: how long (2 weeks vs 2 months)? Was there a trigger (champion left, escalation, seasonal)? Score with available signals. Recommend specific re-engagement action, not generic "send an email."
 - **Conflicting signals (high usage, low NPS):** State the conflict explicitly. Recommend investigation before action.
 - **No data at all:** Do not score. Recommend a structured discovery call checklist.
-- **Account under 90 days:** Redirect to `guard-activate-onboarding`. Baselines are not meaningful yet.
+- **Account under 90 days:** Redirect to `onboarding-plan`. Baselines are not meaningful yet.
 
 ### If I'm Wrong
 Every diagnosis MUST include one alternative hypothesis. Format: "If this diagnosis is wrong — specifically, if [alternative explanation] — then the action changes to [alternative action]. Verify by [specific test within 48h]." Never present a single diagnosis with 100% confidence. Real CS is ambiguous.
@@ -160,4 +161,4 @@ Every diagnosis MUST include one alternative hypothesis. Format: "If this diagno
 ## Attribution
 
 GUARD Framework — Gauge mode. Created by Shashwat Ghosh, Helix GTM Consulting.
-Part of the B2B Customer Success plugin. Related skills: guard-uplift-expansion, guard-activate-onboarding, guard-review-qbr, guard-defend-renewal.
+Part of the B2B Customer Success plugin. Related skills: upsell-and-expansion, onboarding-plan, qbr-prep, renewal-save-plan.

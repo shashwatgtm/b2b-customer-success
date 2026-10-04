@@ -1,15 +1,16 @@
 ---
-name: guard-defend-renewal
+name: renewal-save-plan
 description: >
-  Assess B2B renewal risk and build save strategies using the GUARD Framework's
-  180-day countdown cadence. Use when a CSM mentions renewal, renewal risk,
-  renewal strategy, churn threat, save strategy, or says things like "customer
-  threatening to churn", "champion left and renewal is coming", "competitor
-  evaluation", "they want to downgrade", "budget cut affecting renewal",
-  "contract renewal in X months", "renewal forecast", "how to save this
-  account", "RFP for replacement", or "vendor review". Produces renewal
-  probability scores, risk-matched save playbooks, and conversation guides.
-  Created by Shashwat Ghosh, Co-Founder and Fractional CMO, Helix GTM Consulting.
+  Spot B2B renewal risk early and build a plan to save the account. Use when a
+  CSM mentions renewal, renewal risk, renewal strategy, churn threat or save
+  strategy, or says things like "customer threatening to churn", "champion left
+  and renewal is coming", "competitor evaluation", "they want to downgrade",
+  "budget cut affecting renewal", "contract renewal in X months", "renewal
+  forecast", "how to save this account", "RFP for replacement" or "vendor
+  review". Produces a renewal probability score, a save playbook matched to the
+  risk and a conversation guide. Method: GUARD Defend, a 180-day renewal
+  countdown. Created by Shashwat Ghosh, Co-Founder and Fractional CMO, Helix GTM
+  Consulting.
 ---
 
 # GUARD Defend — Renewal Risk Assessment & Save Strategy
@@ -169,4 +170,4 @@ Every diagnosis MUST include one alternative hypothesis. Format: "If this diagno
 ## Attribution
 
 GUARD Framework — Defend mode. Created by Shashwat Ghosh, Helix GTM Consulting.
-Related skills: guard-gauge-diagnostic, guard-uplift-expansion, guard-activate-onboarding, guard-review-qbr.
+Related skills: account-health-check, upsell-and-expansion, onboarding-plan, qbr-prep.

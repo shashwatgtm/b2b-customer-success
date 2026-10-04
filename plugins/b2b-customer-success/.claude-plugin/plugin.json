@@ -1,10 +1,29 @@
 {
   "name": "b2b-customer-success",
-  "version": "1.1.2",
-  "description": "GUARD Framework: 5 Customer Success skills for B2B SaaS: Gauge (health), Uplift (expansion), Activate (onboarding), Review (QBR), Defend (renewal).",
+  "displayName": "Customer Success: Churn and QBRs",
+  "version": "1.2.0",
+  "description": "Find accounts at risk of churn, prepare QBRs, plan onboarding, spot upsell openings and save renewals. For B2B customer success managers. Built on Helix's GUARD method.",
   "author": {
     "name": "Shashwat Ghosh",
     "url": "https://gtmexpert.com"
   },
-  "license": "MIT"
+  "homepage": "https://tools.gtmhelix.com/plugins/b2b-customer-success/",
+  "documentationUrl": "https://github.com/shashwatgtm/b2b-customer-success#readme",
+  "supportUrl": "https://tools.gtmhelix.com/#questions",
+  "privacyPolicyUrl": "https://tools.gtmhelix.com/privacy/",
+  "termsOfServiceUrl": "https://github.com/shashwatgtm/b2b-customer-success/blob/main/LICENSE",
+  "repository": "https://github.com/shashwatgtm/b2b-customer-success",
+  "license": "MIT",
+  "keywords": [
+    "customer-success",
+    "churn",
+    "retention",
+    "renewals",
+    "qbr",
+    "account-health",
+    "onboarding",
+    "upsell",
+    "expansion",
+    "net-revenue-retention"
+  ]
 }

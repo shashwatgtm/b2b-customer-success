@@ -4,11 +4,11 @@
 
 A Claude Code Marketplace plugin containing 5 Customer Success skills built on the GUARD Framework:
 
-1. **guard-gauge-diagnostic** — Account health scoring (6-signal weighted model)
-2. **guard-uplift-expansion** — Expansion signal analysis & business case builder
-3. **guard-activate-onboarding** — Onboarding success plan builder (4-phase, 90-day)
-4. **guard-review-qbr** — QBR/EBR preparation (7-section template)
-5. **guard-defend-renewal** — Renewal risk assessment & save strategy (180-day cadence)
+1. **account-health-check** — Account health scoring (6-signal weighted model)
+2. **upsell-and-expansion** — Expansion signal analysis & business case builder
+3. **onboarding-plan** — Onboarding success plan builder (4-phase, 90-day)
+4. **qbr-prep** — QBR/EBR preparation (7-section template)
+5. **renewal-save-plan** — Renewal risk assessment & save strategy (180-day cadence)
 
 ## Architecture
 
@@ -17,13 +17,13 @@ b2b-customer-success/
 ├── .claude-plugin/marketplace.json          ← Level 1: Marketplace
 ├── CLAUDE.md
 └── plugins/b2b-customer-success/
-    ├── .claude-plugin/plugin.json           ← Level 2: Plugin (4 fields ONLY)
+    ├── .claude-plugin/plugin.json           ← Level 2: Plugin (directory listing fields)
     └── skills/                              ← Each skill has its own references/ folder
-        ├── guard-gauge-diagnostic/
-        ├── guard-uplift-expansion/
-        ├── guard-activate-onboarding/
-        ├── guard-review-qbr/
-        └── guard-defend-renewal/
+        ├── account-health-check/
+        ├── upsell-and-expansion/
+        ├── onboarding-plan/
+        ├── qbr-prep/
+        └── renewal-save-plan/
 ```
 
 Every skill folder carries its own copy of `references/input-rules.md`, `references/cs-metrics-glossary.md` and `references/health-scoring-model.md`, plus one skill-specific reference file. There is no shared references folder at plugin level.
@@ -32,8 +32,8 @@ Every skill folder carries its own copy of `references/input-rules.md`, `referen
 
 - Never fabricate data — use `[Missing: X]` and `[Assumption: Y]` flags
 - Question Budget: maximum 2 clarifying questions per skill invocation
-- plugin.json has EXACTLY 5 fields: name, version, description, author, license
-- marketplace.json plugin entries have EXACTLY 3 fields: name, source, description
+- plugin.json carries the directory listing fields: name, displayName, version, description, author, homepage, documentationUrl, supportUrl, privacyPolicyUrl, termsOfServiceUrl, repository, license, keywords (owner approved, 4 Oct 2026)
+- marketplace.json plugin entries carry: name, source, displayName, description
 - Skills auto-discovered from `plugins/*/skills/*/SKILL.md`
 - Apply 8-gate SOP to every skill modification
 

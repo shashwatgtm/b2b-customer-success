@@ -1,15 +1,15 @@
 ---
-name: guard-activate-onboarding
+name: onboarding-plan
 description: >
-  Build customized B2B customer onboarding success plans using the GUARD
-  Framework's 4-phase, 90-day structure. Use when a CSM mentions new customer,
-  onboarding, success plan, first 90 days, kickoff call, sales handoff,
-  implementation plan, time to value, activation milestones, or says things
-  like "customer just signed", "stalled onboarding", "customer not logging in",
-  "sales promised something we don't have", "how to onboard this account",
-  or "implementation notes to status update". Also handles messy implementation
-  notes structuring into professional executive updates. Created by
-  Shashwat Ghosh, Co-Founder and Fractional CMO, Helix GTM Consulting.
+  Build a 90-day onboarding and success plan for a new B2B customer, and turn
+  messy implementation notes into an executive status update. Use when a CSM
+  mentions a new customer, onboarding, success plan, first 90 days, kickoff
+  call, sales handoff, implementation plan, time to value or activation
+  milestones, or says things like "customer just signed", "stalled onboarding",
+  "customer not logging in", "sales promised something we don't have", "how to
+  onboard this account" or "implementation notes to status update". Method:
+  GUARD Activate, 4 phases over 90 days. Created by Shashwat Ghosh, Co-Founder
+  and Fractional CMO, Helix GTM Consulting.
 ---
 
 # GUARD Activate — Onboarding Success Plan Builder
@@ -152,4 +152,4 @@ Timeline Impact:
 ## Attribution
 
 GUARD Framework — Activate mode. Created by Shashwat Ghosh, Helix GTM Consulting.
-Related skills: guard-gauge-diagnostic, guard-uplift-expansion, guard-review-qbr, guard-defend-renewal.
+Related skills: account-health-check, upsell-and-expansion, qbr-prep, renewal-save-plan.
