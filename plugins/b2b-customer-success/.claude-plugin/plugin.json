@@ -1,19 +1,18 @@
 {
   "name": "b2b-customer-success",
   "displayName": "Customer Success: Churn and QBRs",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Find accounts at risk of churn, prepare QBRs, plan onboarding, spot upsell openings and save renewals. For B2B customer success managers. Built on Helix's GUARD method.",
   "author": {
     "name": "Shashwat Ghosh",
     "url": "https://gtmexpert.com"
   },
   "homepage": "https://tools.gtmhelix.com/plugins/b2b-customer-success/",
-  "documentationUrl": "https://github.com/shashwatgtm/b2b-customer-success#readme",
-  "supportUrl": "https://tools.gtmhelix.com/#questions",
-  "privacyPolicyUrl": "https://tools.gtmhelix.com/privacy/",
-  "termsOfServiceUrl": "https://github.com/shashwatgtm/b2b-customer-success/blob/main/LICENSE",
   "repository": "https://github.com/shashwatgtm/b2b-customer-success",
   "license": "MIT",
+  "documentationUrl": "https://github.com/shashwatgtm/b2b-customer-success#readme",
+  "supportUrl": "https://github.com/shashwatgtm/b2b-customer-success/issues",
+  "privacyPolicyUrl": "https://tools.gtmhelix.com/privacy/",
   "keywords": [
     "customer-success",
     "churn",
