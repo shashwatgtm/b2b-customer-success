@@ -42,6 +42,18 @@ In Claude Code the plugin also installs a Stop hook (`hooks/hooks.json`, `hooks/
 
 The tests for the script and the hook are in `tests/` at the repository root, outside the plugin folder; they are not installed with the plugin.
 
+## For reviewers
+
+What the shipped code does, for anyone reviewing this plugin (directory reviewers included). Everything below is checked in the files of this version.
+
+- `skills/<skill>/scripts/claim_ledger.py` (the same file in every skill, Python standard library only) reads only the files Claude names on its command line: a copy of the user's message, the page text and search results Claude saved, the reply and the saved files (Word, PowerPoint and Excel files are opened as zip archives with the standard library and read as text). It writes no file, sends nothing, opens no network connection, starts no program and reads no environment variable.
+- `hooks/delivery_check.py` (the Stop hook, Claude Code only, standard library only) reads the hook input on standard input and the session transcript file that input names, and writes one small counter file per session next to that transcript. It sends nothing, opens no network connection, starts no program and reads no environment variable; hooks.json runs it with `python3 -I` (isolated mode, so Python ignores PYTHON* variables and the user's site folder). The hook is new in the 1.2.x updates on purpose: it is the check that the reply the user receives is the text the claim ledger checked.
+- Words a scanner may read as network or credential use, and why they are there (kept, because the behaviour needs them):
+  - "export" and "exports" are ordinary words in the claim ledger's list of common words (as in "a CRM export"); the script never runs a shell command.
+  - `curl https?://...` is part of a regular expression in the claim ledger that recognises an instruction planted in a pasted page or file (for example a hidden line telling an assistant to send data to an address), so the skill can tell the user and ignore it. It is text the script looks for, never a command it runs.
+  - "curl" and "wget" in the hook are patterns that recognise a page Claude downloaded to read, so that file is treated as an input and not as a deliverable. The hook runs nothing.
+- From this version the claim ledger reads Office files by element name, so it holds no web address at all, and Strict Open XML files are read like Transitional ones (before, a Strict file read as empty).
+
 ## Privacy
 
 This plugin sends no data to Helix GTM Consulting or anyone else. It contains skill instructions, reference files, one claim ledger script per skill and one Stop hook for Claude Code (section above), all run on your computer; no server and no MCP server. Account data you paste into Claude is handled under your own Claude account terms.
