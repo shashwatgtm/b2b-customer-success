@@ -1,0 +1,26 @@
+{
+  "repo": "b2b-customer-success",
+  "path": "plugins/b2b-customer-success/skills/renewal-save-plan/SKILL.md",
+  "commit": "4ead2112e7ef4418a40f8aa9cab3108198114706",
+  "source_sha256": "8e09613bf707aab8bb8000b0cc5663fd03c6029c94bd279e3c380b42ef3c81c9",
+  "sha": "ef4f53a0633cae47fce40a8e7655e1ff2e35c58f",
+  "name": "renewal-save-plan",
+  "references": [
+    {
+      "path": "plugins/b2b-customer-success/skills/renewal-save-plan/references/cs-metrics-glossary.md",
+      "sha256": "0d73240a82663a997c0af578d589e534c878000911f51ed9266218d3186a89fb"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/renewal-save-plan/references/health-scoring-model.md",
+      "sha256": "c9c785d5ddc70572398ff9dde3c4d147f0cc8b0b75713446c52673e3e31a6cbc"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/renewal-save-plan/references/input-rules.md",
+      "sha256": "a1742d75c10fdce71740ebd7468fbbdbffaa4af3a441aba36acccf0c8f105d69"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/renewal-save-plan/references/renewal-playbook.md",
+      "sha256": "a978e7f60a67228b975096cd9fc0774990c4521651fe245c6ad870614d53ab30"
+    }
+  ]
+}

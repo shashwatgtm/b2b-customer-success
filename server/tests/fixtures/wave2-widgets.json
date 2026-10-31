@@ -65,5 +65,94 @@
         }
       ]
     }
+  },
+  "renewal_save_plan": {
+    "normal": {
+      "as_of": "2026-10-31",
+      "accounts": [
+        {
+          "account_id": "Account A",
+          "arr": 120000,
+          "renewal_date": "2026-11-30",
+          "renewal_signed": false,
+          "prior_renewal_conversation": true,
+          "factors": [
+            {
+              "factor": "usage",
+              "signal": "positive",
+              "evidence": "Supplied observation for usage"
+            },
+            {
+              "factor": "sponsor",
+              "signal": "positive",
+              "evidence": "Supplied observation for sponsor"
+            },
+            {
+              "factor": "escalations",
+              "signal": "positive",
+              "evidence": "Supplied observation for escalations"
+            },
+            {
+              "factor": "sentiment",
+              "signal": "positive",
+              "evidence": "Supplied observation for sentiment"
+            },
+            {
+              "factor": "competition",
+              "signal": "positive",
+              "evidence": "Supplied observation for competition"
+            },
+            {
+              "factor": "payment",
+              "signal": "positive",
+              "evidence": "Supplied observation for payment"
+            },
+            {
+              "factor": "value",
+              "signal": "positive",
+              "evidence": "Supplied observation for value"
+            },
+            {
+              "factor": "utilization",
+              "signal": "negative",
+              "evidence": "Supplied observation for utilization"
+            },
+            {
+              "factor": "champion",
+              "signal": "negative",
+              "evidence": "Supplied observation for champion"
+            },
+            {
+              "factor": "alignment",
+              "signal": "negative",
+              "evidence": "Supplied observation for alignment"
+            }
+          ],
+          "risks": [
+            {
+              "type": "value",
+              "status": "present",
+              "evidence": "A supplied note questions the value achieved"
+            }
+          ],
+          "milestones": [
+            {
+              "step": "baseline",
+              "status": "not_completed"
+            }
+          ]
+        }
+      ]
+    },
+    "weak": {
+      "as_of": "2026-10-31",
+      "accounts": [
+        {
+          "account_id": "Account A",
+          "renewal_date": "2026-11-30",
+          "factors": []
+        }
+      ]
+    }
   }
 }
