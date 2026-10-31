@@ -1,0 +1,22 @@
+{
+  "repo": "b2b-customer-success",
+  "path": "plugins/b2b-customer-success/skills/account-health-check/SKILL.md",
+  "commit": "4ead2112e7ef4418a40f8aa9cab3108198114706",
+  "source_sha256": "e16cd4851dd59ac962d3a0397a3720b88faf0bc087188498d61a3e84b446f372",
+  "sha": "bbd06522963dad51658282bc39cdc325ef048c82",
+  "name": "account-health-check",
+  "references": [
+    {
+      "path": "plugins/b2b-customer-success/skills/account-health-check/references/cs-metrics-glossary.md",
+      "sha256": "0d73240a82663a997c0af578d589e534c878000911f51ed9266218d3186a89fb"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/account-health-check/references/health-scoring-model.md",
+      "sha256": "c9c785d5ddc70572398ff9dde3c4d147f0cc8b0b75713446c52673e3e31a6cbc"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/account-health-check/references/input-rules.md",
+      "sha256": "a1742d75c10fdce71740ebd7468fbbdbffaa4af3a441aba36acccf0c8f105d69"
+    }
+  ]
+}

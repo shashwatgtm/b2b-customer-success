@@ -1,0 +1,69 @@
+{
+  "account_health_check": {
+    "normal": {
+      "as_of": "2026-10-31",
+      "accounts": [
+        {
+          "account_id": "Account A",
+          "arr": 120000,
+          "age_days": 180,
+          "owner": "Assigned CS owner",
+          "signals": [
+            {
+              "dimension": "adoption",
+              "band": "high",
+              "evidence": "Supplied observation for adoption",
+              "observed_date": "2026-10-30"
+            },
+            {
+              "dimension": "engagement",
+              "band": "high",
+              "evidence": "Supplied observation for engagement",
+              "observed_date": "2026-10-30"
+            },
+            {
+              "dimension": "value",
+              "band": "high",
+              "evidence": "Supplied observation for value",
+              "observed_date": "2026-10-30"
+            },
+            {
+              "dimension": "sentiment",
+              "band": "high",
+              "evidence": "Supplied observation for sentiment",
+              "observed_date": "2026-10-30"
+            },
+            {
+              "dimension": "commercial",
+              "band": "high",
+              "evidence": "Supplied observation for commercial",
+              "observed_date": "2026-10-30"
+            },
+            {
+              "dimension": "expansion",
+              "band": "high",
+              "evidence": "Supplied observation for expansion",
+              "observed_date": "2026-10-30"
+            }
+          ],
+          "risks": []
+        }
+      ]
+    },
+    "weak": {
+      "as_of": "2026-10-31",
+      "accounts": [
+        {
+          "account_id": "Account A",
+          "signals": [
+            {
+              "dimension": "adoption",
+              "band": "low",
+              "evidence": "Usage has declined"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
