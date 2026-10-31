@@ -1,0 +1,26 @@
+{
+  "repo": "b2b-customer-success",
+  "path": "plugins/b2b-customer-success/skills/upsell-and-expansion/SKILL.md",
+  "commit": "4ead2112e7ef4418a40f8aa9cab3108198114706",
+  "source_sha256": "3ef47b4783031b25e29c28e58666dcaf5e91a126024f33e5c572c375d2e26df8",
+  "sha": "367c11709827e7f019028af94ec96490bb29ded0",
+  "name": "upsell-and-expansion",
+  "references": [
+    {
+      "path": "plugins/b2b-customer-success/skills/upsell-and-expansion/references/cs-metrics-glossary.md",
+      "sha256": "0d73240a82663a997c0af578d589e534c878000911f51ed9266218d3186a89fb"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/upsell-and-expansion/references/expansion-signals.md",
+      "sha256": "3e3e322bd866475afd23b373269830cc72fe006b821189f4b233577eacb32764"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/upsell-and-expansion/references/health-scoring-model.md",
+      "sha256": "c9c785d5ddc70572398ff9dde3c4d147f0cc8b0b75713446c52673e3e31a6cbc"
+    },
+    {
+      "path": "plugins/b2b-customer-success/skills/upsell-and-expansion/references/input-rules.md",
+      "sha256": "a1742d75c10fdce71740ebd7468fbbdbffaa4af3a441aba36acccf0c8f105d69"
+    }
+  ]
+}

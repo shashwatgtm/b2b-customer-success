@@ -154,5 +154,60 @@
         }
       ]
     }
+  },
+  "upsell_and_expansion": {
+    "normal": {
+      "as_of": "2026-10-31",
+      "accounts": [
+        {
+          "account_id": "Account A",
+          "health_score": 85,
+          "health_evidence": "Supplied current health review with no known risk",
+          "risks": [],
+          "signals": [
+            {
+              "category": "usage",
+              "present": "yes",
+              "evidence": "Supplied evidence for usage"
+            },
+            {
+              "category": "organization",
+              "present": "yes",
+              "evidence": "Supplied evidence for organization"
+            },
+            {
+              "category": "value",
+              "present": "yes",
+              "evidence": "Supplied evidence for value"
+            },
+            {
+              "category": "timing",
+              "present": "yes",
+              "evidence": "Supplied evidence for timing"
+            }
+          ],
+          "expansion_type": "same_product",
+          "current_state": "100 contracted seats",
+          "opportunity": "20 additional seats",
+          "projected_value": "Not yet quantified",
+          "pricing_authority": false,
+          "current_arr": 12000,
+          "current_units": 100,
+          "additional_units": 20,
+          "usage_percent": 92,
+          "budget_event_date": "2026-12-05"
+        }
+      ]
+    },
+    "weak": {
+      "as_of": "2026-10-31",
+      "accounts": [
+        {
+          "account_id": "Account A",
+          "signals": [],
+          "expansion_type": "same_product"
+        }
+      ]
+    }
   }
 }
