@@ -114,6 +114,19 @@ export function assessRenewal(a: Row, asOf: string) {
   requireDate(a.renewal_date, "Renewal date");
   requireUnique(a.factors, "factor");
   requireUnique(a.milestones ?? [], "step");
+  const owner = typeof a.owner === "string" && a.owner.trim() && !/^(?:unknown|unassigned|not (?:yet )?(?:known|assigned)|none)$/i.test(a.owner.trim()) ? a.owner.trim() : "Unknown; name the accountable CS owner";
+  // The frozen contract already accepts evidence text. Preserve a customer's dated
+  // commitment from that evidence without inventing a new schema field or date.
+  const decisionEvidence = [...a.factors, ...(a.risks ?? [])].map((r: Row) => r.evidence ?? "");
+  const decisionDates = decisionEvidence.flatMap((text: string) => text.split(/[.;\n]/).flatMap(clause => {
+    if (/\b(?:not|never|no|unconfirmed|proposed|tentative)\b/i.test(clause)) return [];
+    const m = clause.match(/\bcustomer(?:[ -]agreed| agreed| confirmed)\s+(?:next\s+)?decision\s+(?:date\s*)?(?:is|:|on)?\s*(\d{4}-\d{2}-\d{2})\b/i);
+    if (!m) return [];
+    requireDate(m[1], "Customer agreed decision date");
+    return [m[1]];
+  }));
+  const agreedDecisionDate = [...new Set(decisionDates)].length === 1 ? decisionDates[0] : null;
+  const decisionDateNote = decisionDates.length && !agreedDecisionDate ? "Conflicting customer decision dates; confirm one date" : agreedDecisionDate ?? "Unknown; record the customer agreed next decision date in the renewal evidence";
   const scored = a.factors.filter((f: Row) => {
     if (f.observed_date) requireDate(f.observed_date, "Factor date", asOf);
     if (f.signal !== "unknown" && !f.evidence?.trim())
@@ -185,7 +198,7 @@ export function assessRenewal(a: Row, asOf: string) {
     evidence: r.evidence,
     steps: strategies[r.type].map((action, i) => ({
       action,
-      owner: a.owner ?? "Assign a CS owner",
+      owner,
       due: plusDays(
         asOf,
         remaining < 0 ? 0 : Math.min(remaining, [0, 7, 21][i]),
@@ -210,7 +223,11 @@ export function assessRenewal(a: Row, asOf: string) {
                   "Confirm the renewal decision process and missing evidence.");
   return {
     accountId: a.account_id,
-    owner: a.owner ?? "Assign a CS owner",
+    agreedDecisionDate,
+    decisionDateNote,
+    decisionAfterRenewal: Boolean(agreedDecisionDate && days(a.renewal_date, agreedDecisionDate) > 0),
+    firstUnfinished: a.renewal_signed === true ? null : calendar.find(s => s.key === "commitment" && s.status !== "completed") ?? calendar.find(s => s.status !== "completed") ?? null,
+    owner,
     arr: a.arr ?? null,
     renewalDate: a.renewal_date,
     daysRemaining: remaining,
@@ -270,6 +287,10 @@ define(
           accounts[0].accountId +
           "; renewal date: " +
           accounts[0].renewalDate,
+        "First unfinished signature step: " + (accounts[0].firstUnfinished?.action ?? (accounts[0].stage.startsWith("SIGNED") ? "Signature confirmed" : "Unknown; confirm the remaining approval and signature steps")),
+        "Accountable owner: " + accounts[0].owner,
+        "Customer agreed next decision date: " + accounts[0].decisionDateNote,
+        ...(accounts[0].decisionAfterRenewal ? ["Decision date falls after contractual renewal; escalate and confirm contract continuity now."] : []),
         "Renewal reviews: " + accounts.length,
         "Risk: " +
           accounts.filter((x: Row) => x.risky).length +
@@ -280,6 +301,10 @@ define(
       ],
       metrics: [{ label: "Known ARR on flagged renewals", value: atRisk }],
       sections: accounts.flatMap((x: Row) => [
+        {
+          heading: x.accountId + " next commitment",
+          body: "First unfinished signature step: " + (x.firstUnfinished?.action ?? "Confirm remaining signature steps or reset the signed success plan") + ". Completion: " + (x.firstUnfinished?.status ?? "Not established") + ". Accountable owner: " + x.owner + ". Customer agreed due date: " + x.decisionDateNote + ". Contractual renewal date remains " + x.renewalDate + ".",
+        },
         {
           heading: x.accountId,
           body:
@@ -312,10 +337,12 @@ define(
         {
           heading: x.accountId + " cadence",
           table: {
-            headers: ["Step", "Due", "Completion", "Overdue"],
+            headers: ["Step", "Cadence due", "Owner", "Customer agreed next decision", "Completion", "Overdue"],
             rows: x.calendar.map((s: Row) => [
               s.key,
               s.due,
+              x.owner,
+              x.decisionDateNote,
               s.status,
               s.overdue ? "Yes" : "Not established",
             ]),
