@@ -303,7 +303,7 @@ define(
       sections: accounts.flatMap((x: Row) => [
         {
           heading: x.accountId + " next commitment",
-          body: "First unfinished signature step: " + (x.firstUnfinished?.action ?? "Confirm remaining signature steps or reset the signed success plan") + ". Completion: " + (x.firstUnfinished?.status ?? "Not established") + ". Accountable owner: " + x.owner + ". Customer agreed due date: " + x.decisionDateNote + ". Contractual renewal date remains " + x.renewalDate + ".",
+          body: "First unfinished signature step: " + (x.firstUnfinished?.action ?? "Confirm remaining signature steps or reset the signed success plan").replace(/[.]+$/, "") + ". Completion: " + (x.firstUnfinished?.status ?? "Not established") + ". Accountable owner: " + x.owner + ". Customer agreed due date: " + x.decisionDateNote + ". Contractual renewal date remains " + x.renewalDate + ".",
         },
         {
           heading: x.accountId,
