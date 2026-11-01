@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Internal run receipts belong in the private hub.
+server/wave2/
+server/wave3-*/
