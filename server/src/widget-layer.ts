@@ -1,3 +1,4 @@
+import { composeResources } from "./resource-handlers.js";
 import { WIDGET_ORIGIN } from "./widget-origin.js";
 import { BUILD_PAYLOAD } from "./build-payload.js";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
@@ -61,15 +62,15 @@ export function attachWidgets(server: Server): void {
       }
       return result;
     })) as typeof server.setRequestHandler;
-  register(ListResourcesRequestSchema, async () => ({
+  const listWidgets = async () => ({
     resources: Object.entries(WIDGETS).map(([name, title]) => ({
       uri: uri(name),
       name: title + " result",
       mimeType: "text/html;profile=mcp-app",
       description: name === "tam_sam_som_calculator" ? "Market sizing result; recalculate when the host enables tool calls." : "Result view with the complete source text.",
     })),
-  }));
-  register(ReadResourceRequestSchema, async (request) => {
+  });
+  const readWidget = async (request: any) => {
     const entry = Object.entries(WIDGETS).find(
       ([name]) => uri(name) === request.params.uri,
     );
@@ -97,5 +98,6 @@ export function attachWidgets(server: Server): void {
         },
       ],
     };
-  });
+  };
+  composeResources(server, listWidgets, readWidget);
 }
