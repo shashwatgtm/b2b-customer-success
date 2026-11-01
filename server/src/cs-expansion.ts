@@ -64,7 +64,7 @@ export function assessExpansion(a: Row, asOf: string) {
         ),
     ),
     score = signals.length,
-    readiness = ["NOT_READY", "EARLY", "DEVELOPING", "WARM", "HOT"][score],
+    readiness = score + "/4 observed qualification signals",
     risks = riskEvidence(a.risks ?? [], asOf),
     healthKnown =
       typeof a.health_score === "number" && !!a.health_evidence?.trim(),
@@ -159,7 +159,7 @@ export function assessExpansion(a: Row, asOf: string) {
         ? "Focus on adoption and value; do not pitch expansion."
         : score === 2
           ? "Develop the evidence and seed a future discussion without a business case."
-          : "Review the business case with the owner and AE.";
+          : "Review unresolved need, customer value and budget with the owner and AE. This is a discussion case, not an approved purchase case.";
   return {
     accountId: a.account_id,
     score,
@@ -210,7 +210,7 @@ define(
       ],
       metrics: [
         {
-          label: "Accounts with a business case",
+          label: "Accounts eligible for a discussion case",
           value: accounts.filter((x: Row) => x.caseAllowed).length,
         },
       ],
@@ -221,7 +221,7 @@ define(
             x.readiness +
             " (" +
             x.score +
-            "/4 supplied positive signals). Health gate: " +
+            "/4 supplied positive signals). GUARD health gate: " +
             x.healthGate +
             ". " +
             x.nextAction +
@@ -235,10 +235,21 @@ define(
             rows: x.signals.map((s: Row) => [s.category, s.evidence]),
           },
         },
+        {
+          heading: x.accountId + ' unresolved purchase conditions',
+          table: {
+            headers: ['Condition','Confirmation needed'],
+            rows: [
+              ['Need','Confirm the customer problem and why additional scope is needed; usage alone is not purchase need.'],
+              ['Value','Confirm the incremental customer outcome, baseline and period; a value signal is not a quantified business case.'],
+              ['Budget','Confirm amount, authority and approval; a booked budget review is not approved spend.'],
+            ],
+          },
+        },
         ...(x.caseAllowed
           ? [
               {
-                heading: x.accountId + " business case",
+                heading: x.accountId + " discussion case, not approved",
                 table: {
                   headers: ["Section", "Supplied content or gap"],
                   rows: x.caseSections.map((s: Row) => [s.section, s.value]),
