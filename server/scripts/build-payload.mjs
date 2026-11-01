@@ -1,5 +1,10 @@
-import {writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {writeFileSync,readFileSync,readdirSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
 const payload=process.env.WAVE_PAYLOAD==='full'?'full':'meta';
-writeFileSync('src/build-payload.ts',`// Generated at build time. No server profile.\nexport const BUILD_PAYLOAD: { payload: "meta" | "full" } = { payload: ${JSON.stringify(payload)} };\n`);
+const domainEnabled=process.env.WIDGET_UI_DOMAIN==='on';
+const sourceDirectory='src';
+const sources=readdirSync(sourceDirectory).filter(name=>name.endsWith('.ts')&&name!=="build-payload.ts").sort().map(name=>[name,readFileSync(sourceDirectory+'/'+name,'utf8')]);
+const buildHash=createHash('sha256').update(JSON.stringify([payload,domainEnabled,sources])).digest('hex').slice(0,12);
+writeFileSync('src/build-payload.ts',`// Generated at build time. No server profile.\nexport const BUILD_PAYLOAD: { payload: "meta" | "full"; domainEnabled: boolean; buildHash: string } = { payload: ${JSON.stringify(payload)}, domainEnabled: ${domainEnabled}, buildHash: ${JSON.stringify(buildHash)} };\n`);
 const result=spawnSync(process.execPath,['node_modules/typescript/bin/tsc'],{stdio:'inherit'});process.exitCode=result.status??1;
