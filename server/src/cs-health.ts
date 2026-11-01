@@ -296,10 +296,7 @@ define(
       summary: [
         "Account: " +
           accounts[0].accountId +
-          "; Score: " +
-          (accounts[0].score === null
-            ? "Not scored"
-            : accounts[0].score + "/100 (Example figure)") +
+          "; Evidence coverage: " + accounts[0].coverage +
           "; Status: " +
           accounts[0].status,
         "Risk type: " +
@@ -325,36 +322,26 @@ define(
           value: accounts.length - known.length,
         },
       ],
-      sections: accounts.map((x: Row) => ({
-        heading: x.accountId,
+      sections: accounts.flatMap((x: Row) => [{
+        heading: x.accountId + ": evidence and next customer check",
         body:
-          "Status: " +
-          x.status +
-          ". Score: " +
-          (x.score === null
-            ? "Not scored"
-            : x.score + "/100 (Example figure)") +
-          ". Risks: " +
-          (x.risks.map((r: Row) => r.type + ": " + r.evidence).join("; ") ||
-            "None supplied") +
-          ". Coverage: " +
-          x.coverage +
-          ". Missing: " +
-          (x.missing.join(", ") || "None") +
-          ". " +
-          x.action +
-          " " +
-          x.alternative,
+          "Evidence coverage: " + x.coverage +
+          ". Missing: " + (x.missing.join(", ") || "None") +
+          ". Risks: " + (x.risks.map((r: Row) => r.type + ": " + r.evidence).join("; ") || "None supplied") +
+          ". Status: " + x.status +
+          ". Next customer check: " + x.action + " " + x.alternative,
         table: {
-          headers: ["Signal", "Band", "Points (example)", "Evidence"],
-          rows: x.signals.map((s: Row) => [
-            s.dimension,
-            s.band,
-            s.points + "/" + s.weight,
-            s.evidence,
-          ]),
+          headers: ["Signal", "Band", "Evidence"],
+          rows: x.signals.map((s: Row) => [s.dimension, s.band, s.evidence]),
         },
-      })),
+      }, {
+        heading: x.accountId + ": weighted signal points",
+        body: "Weighted signal points: " + (x.score === null ? "Not scored" : x.score + "/100 (Example figure; weighted signal points)") + ". These points summarize supplied signal bands; they do not establish account health or a renewal probability.",
+        table: {
+          headers: ["Signal", "Weighted signal points (example)"],
+          rows: x.signals.map((s: Row) => [s.dimension, s.points + "/" + s.weight]),
+        },
+      }]),
       data: { accounts, knownArr, atRiskArr: atRisk },
       limitations: [
         "Source method weights: 20, 20, 20, 15, 15, 10. Within-band midpoints and partial-score normalization are example choices.",
