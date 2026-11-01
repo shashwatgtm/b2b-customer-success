@@ -1,3 +1,4 @@
+import { BUILD_PAYLOAD } from "./build-payload.js";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import {
   ListResourcesRequestSchema,
@@ -44,18 +45,18 @@ export function attachWidgets(server: Server): void {
           ?.filter((c: any) => c.type === "text")
           .map((c: any) => c.text)
           .join("\n");
-        if (typeof text === "string")
-          return {
-            ...result,
-            structuredContent: {
-              ...result.structuredContent,
-              ...widgetPayload(
-                request.params.name,
-                WIDGETS[request.params.name],
-                text,
-              ),
-            },
-          };
+        if (typeof text === "string") {
+          const display: any = { ...result.structuredContent, ...widgetPayload(request.params.name, WIDGETS[request.params.name], text) };
+          const facts: any = {};
+          if (BUILD_PAYLOAD.payload === 'full') return { ...result, structuredContent: display };
+          // Display data and caller context are delivered only to the component.
+          if (display.marketSizing) {
+            const { toolArgumentsEncoded, ...summary } = display.marketSizing;
+            display.marketSizing = summary;
+          }
+          const { structuredContent, ...plain } = result;
+          return { ...plain, ...(Object.keys(facts).length ? { structuredContent: facts } : {}), _meta: { ...result._meta, ...display, toolArguments: request.params.arguments } };
+        }
       }
       return result;
     })) as typeof server.setRequestHandler;
