@@ -34,7 +34,7 @@ const factor = object(
     evidence: text,
     observed_date: text,
   },
-  ["factor", "signal", "evidence"],
+  ["factor", "signal"],
 );
 const stages = [
   {
@@ -116,7 +116,11 @@ export function assessRenewal(a: Row, asOf: string) {
   requireUnique(a.milestones ?? [], "step");
   const scored = a.factors.filter((f: Row) => {
     if (f.observed_date) requireDate(f.observed_date, "Factor date", asOf);
-    return f.signal !== "unknown" && f.evidence.trim();
+    if (f.signal !== "unknown" && !f.evidence?.trim())
+      throw new Error(
+        "Factor evidence is required unless its signal is unknown.",
+      );
+    return f.signal !== "unknown" && f.evidence?.trim();
   });
   const positives = scored.filter((f: Row) => f.signal === "positive").length,
     index =
@@ -127,23 +131,26 @@ export function assessRenewal(a: Row, asOf: string) {
       index === null
         ? "INSUFFICIENT_EVIDENCE"
         : index >= 80
-          ? "VERY_LIKELY_SOURCE_BAND"
+          ? "80 to 100"
           : index >= 60
-            ? "LIKELY_SOURCE_BAND"
+            ? "60 to under 80"
             : index >= 40
-              ? "UNCERTAIN_SOURCE_BAND"
+              ? "40 to under 60"
               : index >= 20
-                ? "AT_RISK_SOURCE_BAND"
-                : "LIKELY_LOST_SOURCE_BAND";
+                ? "20 to under 40"
+                : "0 to under 20";
   const missing = factors.filter(
       (k) => !scored.some((f: Row) => f.factor === k),
     ),
-    risky = risks.length > 0 || (index !== null && index < 60),
-    daily = remaining >= 0 && remaining <= 30 && a.renewal_signed === false,
+    risky =
+      a.renewal_signed !== true &&
+      (risks.length > 0 || (index !== null && index < 60)),
+    daily = remaining >= 0 && remaining <= 30 && a.renewal_signed !== true,
     fireDrill =
       remaining >= 0 &&
       remaining <= 60 &&
-      a.prior_renewal_conversation === false;
+      a.renewal_signed !== true &&
+      a.prior_renewal_conversation !== true;
   const calendar = stages.map((s) => {
     const due = plusDays(a.renewal_date, -s.days),
       status =
@@ -173,35 +180,34 @@ export function assessRenewal(a: Row, asOf: string) {
                   ? "NEGOTIATION_OR_SAVE"
                   : "FINAL_COMMITMENT";
   const matched = risks.filter((r) => strategies[r.type]);
-  const plans =
-    scored.length < 2
-      ? []
-      : matched.map((r) => ({
-          risk: r.type,
-          evidence: r.evidence,
-          steps: strategies[r.type].map((action, i) => ({
-            action,
-            owner: a.owner ?? "Assign a CS owner",
-            due: plusDays(
-              asOf,
-              remaining < 0 ? 0 : Math.min(remaining, [0, 7, 21][i]),
-            ),
-            timing: "Example action schedule; confirm with the owner.",
-          })),
-        }));
+  const plans = matched.map((r) => ({
+    risk: r.type,
+    evidence: r.evidence,
+    steps: strategies[r.type].map((action, i) => ({
+      action,
+      owner: a.owner ?? "Assign a CS owner",
+      due: plusDays(
+        asOf,
+        remaining < 0 ? 0 : Math.min(remaining, [0, 7, 21][i]),
+      ),
+      timing: "Example action schedule; confirm with the owner.",
+    })),
+  }));
   const next =
     a.renewal_signed === true
       ? "Reset the success plan and confirm the next baseline."
       : remaining < 0
         ? "Confirm whether renewal happened before describing the account as retained or lost."
-        : daily
-          ? "Confirm the remaining signature steps today and check progress daily."
-          : fireDrill
-            ? "Start a candid renewal conversation now; the prior conversation is explicitly absent."
-            : scored.length < 2
-              ? "Run account_health_check or collect the missing health factors first."
-              : (plans[0]?.steps[0].action ??
-                "Confirm the renewal decision process and missing evidence.");
+        : remaining <= 30 && (risks.length > 0 || scored.length < 2)
+          ? "Hold a candid renewal conversation this week. Confirm the decision and remaining signature steps today."
+          : daily
+            ? "Confirm the remaining signature steps today and check progress daily."
+            : fireDrill
+              ? "Start a candid renewal conversation now; the prior conversation is not confirmed."
+              : scored.length < 2
+                ? "Collect the missing health factors while confirming the renewal decision process."
+                : (plans[0]?.steps[0].action ??
+                  "Confirm the renewal decision process and missing evidence.");
   return {
     accountId: a.account_id,
     owner: a.owner ?? "Assign a CS owner",
@@ -211,7 +217,7 @@ export function assessRenewal(a: Row, asOf: string) {
     stage,
     index,
     indexLabel: "Example signal index, not a calibrated renewal probability",
-    sourceBand: band,
+    signalBand: band,
     coverage: scored.length + "/10",
     missing,
     scored,
@@ -245,7 +251,13 @@ define(
     requireUnique(a.accounts, "account_id");
     const accounts = a.accounts
         .map((x: Row) => assessRenewal(x, a.as_of))
-        .sort((x: Row, y: Row) => x.daysRemaining - y.daysRemaining),
+        .sort(
+          (x: Row, y: Row) =>
+            Number(x.daysRemaining < 0 || x.stage.startsWith("SIGNED")) -
+              Number(y.daysRemaining < 0 || y.stage.startsWith("SIGNED")) ||
+            Number(y.risky) - Number(x.risky) ||
+            x.daysRemaining - y.daysRemaining,
+        ),
       atRisk = sum(
         accounts
           .filter((x: Row) => x.risky && x.arr !== null)
@@ -254,13 +266,17 @@ define(
     return {
       title: "Renewal review and save plan",
       summary: [
+        "Priority account: " +
+          accounts[0].accountId +
+          "; renewal date: " +
+          accounts[0].renewalDate,
         "Renewal reviews: " + accounts.length,
         "Risk: " +
           accounts.filter((x: Row) => x.risky).length +
           " require review",
         "Today: " + accounts[0].owner + "; " + accounts[0].nextAction,
         "Escalation: " + accounts[0].escalation,
-        "Nearest renewal date: " + accounts[0].renewalDate,
+        "Priority renewal date: " + accounts[0].renewalDate,
       ],
       metrics: [{ label: "Known ARR on flagged renewals", value: atRisk }],
       sections: accounts.flatMap((x: Row) => [
@@ -270,7 +286,17 @@ define(
             x.indexLabel +
             ": " +
             (x.index ?? "Not scored") +
-            ". Coverage " +
+            ". " +
+            (x.conflictingSignals
+              ? "Conflicting signals: the positive index does not remove the supplied risk. "
+              : "") +
+            (x.dailyAction
+              ? "Signature is not confirmed: check remaining steps daily. "
+              : "") +
+            (x.fireDrill
+              ? "Prior renewal conversation is not confirmed: arrange one now. "
+              : "") +
+            "Coverage " +
             x.coverage +
             ". Stage " +
             x.stage +
@@ -307,7 +333,7 @@ define(
       data: { accounts, atRiskArr: atRisk },
       limitations: [
         "Ten source factors are equally weighted here as an example; only evidenced positive or negative factors enter the denominator. Missing factors remain unknown.",
-        "The source score bands are shown for traceability, not as validated probabilities. No GRR or retained ARR forecast is calculated from this index.",
+        "Signal bands are neutral numeric ranges, not probabilities. No GRR or retained ARR forecast is calculated from this index.",
         "Only explicitly not-completed past milestones are called overdue. Unknown completion is not treated as a missed action.",
         "Action dates are example schedules capped at the stated renewal date; they create no calendar event or message.",
       ],

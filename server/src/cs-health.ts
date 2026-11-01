@@ -55,7 +55,7 @@ export const riskSchema = object(
     evidence: text,
     observed_date: text,
   },
-  ["type", "status", "evidence"],
+  ["type", "status"],
 );
 const signalSchema = object(
   {
@@ -64,7 +64,7 @@ const signalSchema = object(
     evidence: text,
     observed_date: text,
   },
-  ["dimension", "band", "evidence"],
+  ["dimension", "band"],
 );
 signalSchema.properties!.band.description =
   "Use only supplied evidence. high/good/mixed/low/poor follow the source bands: adoption 80%+/60-79%/40-59%/20-39%/under20%; engagement multi-stakeholder/primary engaged/single contact/hard to reach/no response; value documented ROI/measurable outcomes/partial value/limited value/no articulated value; sentiment advocacy/positive/mixed/negative/severe unresolved; commercial timely and full use/timely/occasional friction/payment delays/overdue or termination; expansion active request/positive signals/neutral/contraction/active downsizing. Use unknown when evidence is absent. Do not infer a band from the account name.";
@@ -85,7 +85,11 @@ export function riskEvidence(rows: Row[], asOf: string) {
   requireUnique(rows, "type");
   return rows.filter((r) => {
     if (r.observed_date) requireDate(r.observed_date, "Risk date", asOf);
-    return r.status === "present" && r.evidence.trim();
+    if (r.status !== "unknown" && !r.evidence?.trim())
+      throw new Error(
+        "Risk evidence is required unless its status is unknown.",
+      );
+    return r.status === "present" && r.evidence?.trim();
   });
 }
 export function escalation(
@@ -132,7 +136,11 @@ export function assessHealth(account: Row, asOf: string) {
     const input = account.signals.find((s: Row) => s.dimension === dimension);
     if (input?.observed_date)
       requireDate(input.observed_date, "Signal date", asOf);
-    if (!input || input.band === "unknown" || !input.evidence.trim()) {
+    if (input && input.band !== "unknown" && !input.evidence?.trim())
+      throw new Error(
+        "Signal evidence is required unless its band is unknown.",
+      );
+    if (!input || input.band === "unknown") {
       missing.push(dimension);
       continue;
     }
@@ -209,23 +217,32 @@ export function assessHealth(account: Row, asOf: string) {
   if (
     !onboarding &&
     risks.length &&
-    ["PROVISIONALLY_HEALTHY", "NEEDS_ATTENTION"].includes(status)
+    [
+      "PROVISIONALLY_HEALTHY",
+      "NEEDS_ATTENTION",
+      "INSUFFICIENT_EVIDENCE",
+    ].includes(status)
   )
     status = "AT_RISK_QUALITATIVE_OVERRIDE";
-  const risky = [
-      "AT_RISK",
-      "CRITICAL",
-      "AT_RISK_QUALITATIVE_OVERRIDE",
-    ].includes(status),
-    action = onboarding
-      ? "Establish onboarding milestones and baseline data first."
-      : scoreable < 4
-        ? "Collect missing signals before relying on a full assessment."
-        : risks.length
-          ? actionFor[risks[0].type]
-          : risky
-            ? "Review the lowest supplied signal and agree a recovery action."
-            : "Validate the supplied value and agree the next review.";
+  const risky =
+      risks.length > 0 ||
+      [
+        "AT_RISK",
+        "CRITICAL",
+        "AT_RISK_QUALITATIVE_OVERRIDE",
+        "LOW_SCORE_NEEDS_CORROBORATION",
+      ].includes(status),
+    action = risks.length
+      ? actionFor[risks[0].type]
+      : onboarding
+        ? "Establish onboarding milestones and baseline data first."
+        : scoreable < 4
+          ? "Collect missing signals before relying on a full assessment."
+          : risks.length
+            ? actionFor[risks[0].type]
+            : risky
+              ? "Review the lowest supplied signal and agree a recovery action."
+              : "Validate the supplied value and agree the next review.";
   return {
     accountId: account.account_id,
     arr: account.arr ?? null,
@@ -265,13 +282,33 @@ define(
     requireUnique(a.accounts, "account_id");
     const accounts = a.accounts
       .map((x: Row) => assessHealth(x, a.as_of))
-      .sort((x: Row, y: Row) => (x.score ?? -1) - (y.score ?? -1));
+      .sort(
+        (x: Row, y: Row) =>
+          Number(y.risky) - Number(x.risky) ||
+          (x.score ?? Infinity) - (y.score ?? Infinity) ||
+          x.accountId.localeCompare(y.accountId),
+      );
     const known = accounts.filter((x: Row) => x.arr !== null),
       atRisk = sum(known.filter((x: Row) => x.risky).map((x: Row) => x.arr)),
       knownArr = sum(known.map((x: Row) => x.arr));
     return {
       title: "Account health review",
       summary: [
+        "Account: " +
+          accounts[0].accountId +
+          "; Score: " +
+          (accounts[0].score === null
+            ? "Not scored"
+            : accounts[0].score + "/100 (Example figure)") +
+          "; Status: " +
+          accounts[0].status,
+        "Risk type: " +
+          (accounts[0].risks
+            .map((r: Row) => r.type + ": " + r.evidence)
+            .join("; ") ||
+            (accounts[0].risky
+              ? "Low score needs review; no qualitative risk supplied"
+              : "No qualitative risk supplied")),
         "Account assessments: " + accounts.length,
         "Risk: " +
           accounts.filter((x: Row) => x.risky).length +
@@ -297,6 +334,9 @@ define(
           (x.score === null
             ? "Not scored"
             : x.score + "/100 (Example figure)") +
+          ". Risks: " +
+          (x.risks.map((r: Row) => r.type + ": " + r.evidence).join("; ") ||
+            "None supplied") +
           ". Coverage: " +
           x.coverage +
           ". Missing: " +
