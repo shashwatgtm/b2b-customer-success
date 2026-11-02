@@ -12,6 +12,11 @@ description: >
   Helix GTM Consulting.
 ---
 
+## Required region and industry context
+
+Before producing the answer, read [Region and industry reference](references/region-context.md) and apply its selection and output rules to every sector claim in this skill. Use the user's own selling market, the matching country, vertical and subtype, with sourced conditions. Keep multiple markets separate. If the region or country is missing, ask the short question in that reference and omit unsupported jurisdiction advice. Never infer a market from a competitor, company name, quote or negated place. Preserve existing evidence limits, refusals and calculations.
+
+
 # GUARD Uplift — Expansion Signal Analysis & Business Case
 
 ## Section 0 — Operating Principles (MANDATORY)
