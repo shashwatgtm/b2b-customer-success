@@ -1,0 +1,65 @@
+{
+  "skills": [
+    {
+      "repo": "b2b-customer-success",
+      "path": "plugins/b2b-customer-success/skills/qbr-prep/SKILL.md",
+      "before_sha256": "3a98740b2476fbe467e66f763389307742807152e4b1471d781eedcca3cef086",
+      "after_sha256": "73122221587a5d6c6434e14c6af651f5eb418f18466c1ab61b45781abde46597",
+      "frontmatter_sha256": "2bed4b6c011510bd05c98870426f871fb1893e3e9e6590b52c38f8c30b5e591d",
+      "reference_sha256": "48e5917aecb374a4dfd467a5a74a066c1061c275d6110cc51b36a4860fe0bd8e"
+    },
+    {
+      "repo": "b2b-customer-success",
+      "path": "plugins/b2b-customer-success/skills/onboarding-plan/SKILL.md",
+      "before_sha256": "6e9b00b90f346fe1f6af0a0002622c50decae0947beada05bd15ae9d69c26ba8",
+      "after_sha256": "7225fedf582b3f8b44a3836ac09c4842b4eea22b15d4696de2fe5e83ccd2bc03",
+      "frontmatter_sha256": "ec4de998e49d50fce98bb9049a47a95330d0cfaa500a6d71d6cc224ac0045b65",
+      "reference_sha256": "48e5917aecb374a4dfd467a5a74a066c1061c275d6110cc51b36a4860fe0bd8e"
+    },
+    {
+      "repo": "b2b-customer-success",
+      "path": "plugins/b2b-customer-success/skills/account-health-check/SKILL.md",
+      "before_sha256": "50809e93a3a0f725a3f74665c5f7eb5f42cec4ed8a08dce2335950e7115eb984",
+      "after_sha256": "160bca3cdb7cbed9a8123b8637714fca6c45b5726a22bf978163931dbeda1ac1",
+      "frontmatter_sha256": "ef2df34d17c37de34fc55c222776be93e41c4d02eb8ebd0fea54c4b030db9992",
+      "reference_sha256": "48e5917aecb374a4dfd467a5a74a066c1061c275d6110cc51b36a4860fe0bd8e"
+    },
+    {
+      "repo": "b2b-customer-success",
+      "path": "plugins/b2b-customer-success/skills/upsell-and-expansion/SKILL.md",
+      "before_sha256": "644e82c5cc54d762f33b369793baa406ce124440ecebc277f6a85438ab7494c8",
+      "after_sha256": "81cc8904a5ce1b6d222a281d120fbd70ec6099dae736e8cd95aa495b00077487",
+      "frontmatter_sha256": "b9063647ddbd49b3ce1748aaa5584a9c7cecfd08511b7054780e0b4eb2cc892b",
+      "reference_sha256": "48e5917aecb374a4dfd467a5a74a066c1061c275d6110cc51b36a4860fe0bd8e"
+    },
+    {
+      "repo": "b2b-customer-success",
+      "path": "plugins/b2b-customer-success/skills/renewal-save-plan/SKILL.md",
+      "before_sha256": "5973aa4e13780899cd037a722f52265ba0b109b9f2ba7d583de8496a269c2af6",
+      "after_sha256": "e140f9ccae2b0428ee78449a451ef8c911d300994bdfab34f9a95009bff133dd",
+      "frontmatter_sha256": "0f7a4037a063755b91ef0197535066f4b84630dd4f5d0e4d6586dcfe1c6fa23f",
+      "reference_sha256": "48e5917aecb374a4dfd467a5a74a066c1061c275d6110cc51b36a4860fe0bd8e"
+    }
+  ],
+  "tools": {
+    "alpha": [
+      "gtm_consultation",
+      "epic_audit",
+      "generate_roadmap"
+    ],
+    "revenue": [
+      "account_plan_builder",
+      "deal_strategy_coach",
+      "discovery_question_bank",
+      "roi_business_case_builder",
+      "mutual_action_plan_generator",
+      "win_loss_analyzer",
+      "proposal_section_writer",
+      "email_sequence_generator",
+      "demo_script_builder",
+      "pricing_negotiation_guide",
+      "champion_enablement_kit",
+      "competitive_trap_setter"
+    ]
+  }
+}
