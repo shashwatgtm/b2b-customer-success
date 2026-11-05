@@ -36,8 +36,8 @@
       "repo": "b2b-customer-success",
       "path": "plugins/b2b-customer-success/skills/renewal-save-plan/SKILL.md",
       "before_sha256": "5973aa4e13780899cd037a722f52265ba0b109b9f2ba7d583de8496a269c2af6",
-      "after_sha256": "e140f9ccae2b0428ee78449a451ef8c911d300994bdfab34f9a95009bff133dd",
-      "frontmatter_sha256": "0f7a4037a063755b91ef0197535066f4b84630dd4f5d0e4d6586dcfe1c6fa23f",
+      "after_sha256": "201f7fa3114e3ef783e9390be9059e057e1b0e6e18039e6a85b5dcdaf721d926",
+      "frontmatter_sha256": "bb08b0bfc9632d12ab7707aad733a09899048a747507ef3e69ff346efea2bd5d",
       "reference_sha256": "48e5917aecb374a4dfd467a5a74a066c1061c275d6110cc51b36a4860fe0bd8e"
     }
   ],

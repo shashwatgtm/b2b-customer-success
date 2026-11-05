@@ -32,6 +32,8 @@ class PluginRegressions(unittest.TestCase):
   for row in DATA['skills']:
    if not any(x in row['path'] for x in ['renewal-save-plan','guard-defend-renewal']):continue
    s=(ROOT/row['path']).read_bytes().decode();body=s[len(header(s)):];self.assertIn('No generated renewal probability or GRR forecast',body);self.assertNotIn('Renewal Probability: [X]%',body)
+   # RFIX M091: the advertised capability must match the body. No probability is produced, so none may be promised.
+   self.assertNotRegex(header(s),r'(?i)probability\s+scores?');self.assertIn('no renewal probability',header(s));self.assertNotRegex(header(s),r'(?i)GRR')
  def test_M094_connector_body_matches_registered_names(self):
   for row in DATA['skills']:
    s=(ROOT/row['path']).read_bytes().decode();body=s[len(header(s)):]
