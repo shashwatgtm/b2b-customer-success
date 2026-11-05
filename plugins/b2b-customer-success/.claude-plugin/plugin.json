@@ -2,7 +2,7 @@
   "name": "b2b-customer-success",
   "displayName": "Customer Success: Churn and QBRs",
   "version": "1.2.6",
-  "description": "Find accounts at risk of churn, prepare QBRs, plan onboarding, spot upsell openings and save renewals. For B2B customer success managers. Built on Helix's GUARD method.",
+  "description": "For B2B customer success managers: decide which accounts are at risk of churn and why, what to show in a QBR, how to onboard a new customer, when to pitch an upsell and how to save a renewal. Give it your notes, a CRM export or a plain conversation; get health scores, plans, review briefs and conversation guides. Built on Helix's GUARD method.",
   "author": {
     "name": "Shashwat Ghosh",
     "url": "https://gtmhelix.com/about/"

@@ -1,6 +1,8 @@
 # Customer Success: Churn and QBRs
 
-Five Claude skills for B2B customer success managers: find accounts at risk of churn, prepare QBRs, plan onboarding, spot upsell openings and save renewals. Built on the GUARD method by Shashwat Ghosh, Helix GTM Consulting.
+Five Claude skills for B2B customer success managers. They help you decide which accounts are at risk of churn and why, what to show in a QBR, how to onboard a new customer, when to pitch an upsell and how to save a renewal. You give them your notes, a CRM export or a plain conversation; you get a health score, a plan, a review brief or a conversation guide. Built on the GUARD method by Shashwat Ghosh, Helix GTM Consulting.
+
+This plugin runs in Claude Code and Claude Cowork. The same skills are also bundled in the Helix GTM Suite for Gemini CLI and Antigravity: https://github.com/shashwatgtm/helix-gtm-suite
 
 Plugin page with install steps for Claude Code and Cowork, and real example outputs from each skill: https://tools.gtmhelix.com/plugins/b2b-customer-success/
 
